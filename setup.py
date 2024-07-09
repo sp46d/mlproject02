@@ -8,7 +8,7 @@ __version__ = "0.0.0"
 
 REPO_NAME = "mlproject02"
 AUTHOR_USER_NAME = "sp46d"
-SRC_REPO = "testSummarizer"
+SRC_REPO = "textSummarizer"
 AUTHOR_EMAIL = "sanghyuk.park85@gmail.com"
 
 
