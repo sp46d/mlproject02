@@ -4,7 +4,7 @@ In this project, I build my own text summarization app from scratch, using Huggi
 This project generally follows the guideline provided by 'DSwithBappy' in his [YouTube video](https://youtu.be/p7V4Aa7qEpw?list=PLDcfxd4ep_-5N_B-SRYvrqrLD-Dd8WxUC), with some tweaks made by myself to make the app meet my needs.
 
 
-## Wrokflows
+## Workflows
 
 1. Update config.yaml 
 2. Update params.yaml
