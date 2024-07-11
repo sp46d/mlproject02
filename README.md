@@ -14,3 +14,14 @@ This project generally follows the guideline provided by 'DSwithBappy' in his [Y
 6. Update the pipeline
 7. Update main.py
 8. Update app.py
+
+## TODO
+
+Use colab to train the model and transfer the learning to the local machine:
+
+- [ ] Implement HuggingFace PEFT API for training the model
+  - Decide between freezing layers and using PEFT for training
+- [ ] Download PubMed dataset
+  - Select the subset of the dataset to train
+- [ ] Train the model on Colab
+- [ ] Modify the code to be able to use the pretrained parameters on colab (if not present, train the model locally)
