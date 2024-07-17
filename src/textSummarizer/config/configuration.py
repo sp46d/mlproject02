@@ -1,9 +1,11 @@
 from textSummarizer.constants import *
 from textSummarizer.utils.common import read_yaml, create_directories
-from textSummarizer.entity import (DataIngestionConfig,
+from textSummarizer.entity import (DataLoaderConfig,
+                                   DataIngestionConfig,
                                    DataValidationConfig,
                                    DataTransformationConfig,
                                    ModelTrainerConfig,
+                                   ModelLoaderConfig,
                                    ModelEvaluationConfig)
 
 from pathlib import Path
@@ -34,6 +36,20 @@ class ConfigurationManager:
         
         return data_ingestion_config
     
+    
+    def get_data_loader_config(self) -> DataLoaderConfig:
+        config = self.config.data_loader
+        
+        create_directories([Path(config.root_dir)])
+        
+        data_loader_config = DataLoaderConfig(
+            root_dir=Path(config.root_dir),
+            dataset_name=config.dataset_name,
+            local_data_path=Path(config.local_data_path)
+        )
+        
+        return data_loader_config
+        
     
     def get_data_validation_config(self) -> DataValidationConfig:
         config = self.config.data_validation
@@ -67,23 +83,42 @@ class ConfigurationManager:
         params = self.params.TrainingArguments
         
         model_trainer_config = ModelTrainerConfig(
-            root_dir=config.root_dir,
-            data_path=config.data_path,
-            model_ckpt=config.model_ckpt,
+            root_dir=Path(config.root_dir),
+            data_path=Path(config.data_path),
+            base_model=config.base_model,
+            fine_tuned_model=config.fine_tuned_model,
+            use_fine_tuned_model=config.use_fine_tuned_model,
+            dataset_text_field=params.dataset_text_field,
             num_train_epochs=params.num_train_epochs,
-            warmup_steps=params.warmup_steps,
             per_device_train_batch_size=params.per_device_train_batch_size,
-            weight_decay=params.weight_decay,
+            per_device_eval_batch_size=params.per_device_eval_batch_size,
+            gradient_accumulation_steps=params.gradient_accumulation_steps,
+            learning_rate=params.learning_rate,
+            lr_scheduler_type=params.lr_scheduler_type,
             logging_steps=params.logging_steps,
-            evaluation_strategy=params.evaluation_strategy,
-            eval_steps=params.eval_steps,
-            save_steps=params.save_steps,
-            gradient_accumulation_steps=params.gradient_accumulation_steps
+            max_seq_length=params.max_seq_length,
+            lora_r=params.lora_r,
+            lora_alpha=params.lora_alpha,
+            lora_dropout=params.lora_dropout,
+            lora_target_modules=params.lora_target_modules
         )
         
         return model_trainer_config
 
 
+    def get_model_loader_config(self) -> ModelLoaderConfig:
+        config = self.config.model_loader
+        
+        create_directories([Path(config.root_dir)])
+        
+        model_loader_config = ModelLoaderConfig(
+            root_dir=Path(config.root_dir),
+            model_name=config.model_name,
+            
+        )
+        
+        return model_loader_config
+        
 
     def get_model_evaluation_config(self) -> ModelEvaluationConfig:
         config = self.config.model_evaluation

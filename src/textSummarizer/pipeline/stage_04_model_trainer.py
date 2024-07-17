@@ -3,7 +3,7 @@ from textSummarizer.components.model_trainer import ModelTrainer
 from textSummarizer.config.configuration import ConfigurationManager
 
 
-class ModelTrainerPipeline:
+class ModelTrainerTrainingPipeline:
     def __init__(self):
         pass
     

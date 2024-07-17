@@ -1,0 +1,56 @@
+{
+  "builder_name": "parquet",
+  "citation": "",
+  "config_name": "default",
+  "dataset_name": "xsum-6k",
+  "dataset_size": 13916232,
+  "description": "",
+  "download_checksums": {
+    "hf://datasets/sp46d/xsum-6k@87133dbba7025632f4ef3fd551ef67e2ec7950d9/data/train-00000-of-00001.parquet": {
+      "num_bytes": 7093542,
+      "checksum": null
+    },
+    "hf://datasets/sp46d/xsum-6k@87133dbba7025632f4ef3fd551ef67e2ec7950d9/data/test-00000-of-00001.parquet": {
+      "num_bytes": 1774342,
+      "checksum": null
+    }
+  },
+  "download_size": 8867884,
+  "features": {
+    "document": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "summary": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "id": {
+      "dtype": "string",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 22784116,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 11146243,
+      "num_examples": 4800,
+      "dataset_name": "xsum-6k"
+    },
+    "test": {
+      "name": "test",
+      "num_bytes": 2769989,
+      "num_examples": 1200,
+      "dataset_name": "xsum-6k"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}
