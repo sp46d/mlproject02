@@ -38,6 +38,7 @@ class ModelTrainerConfig:
     base_model: str
     fine_tuned_model: str
     use_fine_tuned_model: bool
+    out_dir: str
     dataset_text_field: str
     num_train_epochs: int
     per_device_train_batch_size: int
@@ -52,13 +53,7 @@ class ModelTrainerConfig:
     lora_dropout: float
     lora_target_modules: List[str]
 
-    
-@dataclass(frozen=True)
-class ModelLoaderConfig:
-    root_dir: Path
-    model_name: str
-    
-    
+
 @dataclass(frozen=True)
 class ModelEvaluationConfig:
     root_dir: Path

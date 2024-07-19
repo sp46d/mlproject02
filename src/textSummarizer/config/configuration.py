@@ -5,7 +5,6 @@ from textSummarizer.entity import (DataLoaderConfig,
                                    DataValidationConfig,
                                    DataTransformationConfig,
                                    ModelTrainerConfig,
-                                   ModelLoaderConfig,
                                    ModelEvaluationConfig)
 
 from pathlib import Path
@@ -88,6 +87,7 @@ class ConfigurationManager:
             base_model=config.base_model,
             fine_tuned_model=config.fine_tuned_model,
             use_fine_tuned_model=config.use_fine_tuned_model,
+            out_dir=config.out_dir,
             dataset_text_field=params.dataset_text_field,
             num_train_epochs=params.num_train_epochs,
             per_device_train_batch_size=params.per_device_train_batch_size,
@@ -105,20 +105,6 @@ class ConfigurationManager:
         
         return model_trainer_config
 
-
-    def get_model_loader_config(self) -> ModelLoaderConfig:
-        config = self.config.model_loader
-        
-        create_directories([Path(config.root_dir)])
-        
-        model_loader_config = ModelLoaderConfig(
-            root_dir=Path(config.root_dir),
-            model_name=config.model_name,
-            
-        )
-        
-        return model_loader_config
-        
 
     def get_model_evaluation_config(self) -> ModelEvaluationConfig:
         config = self.config.model_evaluation
